@@ -121,7 +121,7 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 /* Toast Banner */
 @keyframes toastIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes toastOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-16px)}}
-.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:2000;background:#1a1a28;border:1px solid #5865f255;border-radius:14px;padding:14px 16px 16px;width:calc(min(480px,100vw) - 32px);max-width:448px;box-shadow:0 8px 32px #00000088;animation:toastIn .3s ease both}
+.toast{display:block;width:calc(100% - 28px);margin:10px 14px 0;background:#1a1a28;border:1px solid #5865f255;border-radius:14px;padding:14px 16px 16px;box-shadow:0 8px 32px #00000088;animation:toastIn .3s ease both;position:relative;z-index:10}
 .toast.out{animation:toastOut .3s ease both}
 .toast-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .toast-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #ffffff08;font-size:12px}
@@ -159,10 +159,90 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 .gold-quick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
 .gold-qbtn{flex:1;min-width:60px;background:#ffd70012;border:1px solid #ffd70030;border-radius:6px;color:#ffd700aa;font-size:11px;font-weight:600;padding:6px 4px;cursor:pointer;font-family:inherit;transition:.15s;text-align:center}
 .gold-qbtn:active{background:#ffd70025;color:#ffd700}
+
+/* Weekly Reset Countdown */
+.reset-bar{display:flex;align-items:center;justify-content:space-between;background:#1c1c26;border:1px solid #ffffff0d;border-radius:8px;padding:8px 14px;margin:0 14px 0;font-size:11px;color:#55556a}
+.reset-label{display:flex;align-items:center;gap:6px}
+.reset-time{font-weight:700;color:#7289da;font-size:12px}
+.reset-bar .reset-dot{width:6px;height:6px;border-radius:50%;background:#7289da;box-shadow:0 0 6px #7289da}
+
+/* Ausklappbare Karte */
+@keyframes expandIn{from{opacity:0;max-height:0}to{opacity:1;max-height:300px}}
+.card-expand{overflow:hidden;animation:expandIn .25s ease both;border-top:1px solid #ffffff08;padding:10px 14px 12px 20px}
+.expand-section{margin-bottom:8px}
+.expand-label{font-size:10px;color:#44445a;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.expand-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #ffffff06;font-size:12px}
+.expand-row:last-child{border-bottom:none}
+.expand-chevron{font-size:10px;color:#44445a;transition:transform .2s;margin-left:auto;flex-shrink:0}
+.expand-chevron.open{transform:rotate(180deg)}
+
+/* ── Lade-Screen ── */
+#splash{position:fixed;inset:0;z-index:9999;background:#0a0a0f;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+#splash.hide{animation:splashOut .5s ease forwards}
+@keyframes splashOut{to{opacity:0;pointer-events:none}}
+.splash-logo{font-size:52px;animation:splashBounce .6s cubic-bezier(0.34,1.56,0.64,1) both}
+@keyframes splashBounce{from{opacity:0;transform:scale(0.4) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.splash-title{font-family:'Poppins',sans-serif;font-size:26px;font-weight:800;letter-spacing:4px;color:#fff;opacity:0;animation:splashFade .4s .3s ease forwards}
+.splash-title em{color:#7289da;font-style:normal}
+.splash-sub{font-size:12px;color:#44445a;letter-spacing:2px;text-transform:uppercase;opacity:0;animation:splashFade .4s .5s ease forwards}
+.splash-bar{width:120px;height:3px;background:#1e1e2a;border-radius:3px;overflow:hidden;opacity:0;animation:splashFade .4s .6s ease forwards;margin-top:8px}
+.splash-bar-fill{height:100%;background:linear-gradient(90deg,#5865f2,#7289da);border-radius:3px;animation:splashLoad 1s .7s ease forwards;width:0}
+@keyframes splashFade{to{opacity:1}}
+@keyframes splashLoad{to{width:100%}}
+
+/* ── iLvl Levelup Glow ── */
+@keyframes lvlUp{0%{color:#ffd700;text-shadow:0 0 0 #ffd700}30%{color:#fff;text-shadow:0 0 20px #ffd700,0 0 40px #ffd700aa}100%{color:#ffd700cc;text-shadow:none}}
+.ilvl-lvlup{animation:lvlUp .6s ease both}
+
+/* ── Header Klassen-Glow ── */
+@keyframes hdrPulse{0%,100%{box-shadow:none}50%{box-shadow:0 2px 20px var(--cls-color,#7289da)33}}
+.hdr.cls-pulse{animation:hdrPulse 3s ease-in-out infinite}
+
+/* ── Klassen-Symbol ── */
+.cls-emblem{position:absolute;right:10px;bottom:8px;font-size:22px;opacity:0.07;pointer-events:none;user-select:none;line-height:1}
+
+/* Onboarding */
+.ob-screen{position:fixed;inset:0;z-index:8000;background:#0a0a0f;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 24px;text-align:center}
+.ob-step{display:none}.ob-step.active{display:flex;flex-direction:column;align-items:center;gap:14px;animation:splashFade .35s ease both}
+.ob-emoji{font-size:56px}
+.ob-title{font-size:20px;font-weight:800;color:#fff;letter-spacing:.5px}
+.ob-desc{font-size:13px;color:#55556a;line-height:1.7;max-width:280px}
+.ob-dots{display:flex;gap:6px;margin-top:4px}
+.ob-dot{width:7px;height:7px;border-radius:50%;background:#2a2a3a;transition:.3s}
+.ob-dot.on{background:#7289da;width:20px;border-radius:4px}
+.ob-next{background:#5865f2;border:none;border-radius:10px;padding:13px 32px;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 16px #5865f240;margin-top:8px}
+.ob-skip{background:none;border:none;color:#44445a;font-size:12px;cursor:pointer;font-family:inherit;margin-top:4px}
+
+/* Dungeon Tracker */
+.dung-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.dung-card{background:#1c1c26;border:1px solid #ffffff0d;border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:.15s;user-select:none}
+.dung-card.done{background:#57f28710;border-color:#57f28730}
+.dung-card:active{transform:scale(0.97)}
+.dung-name{font-size:12px;font-weight:600;color:#dcddde;flex:1;line-height:1.3}
+.dung-card.done .dung-name{color:#44445a;text-decoration:line-through}
+.dung-check{font-size:14px;flex-shrink:0}
+.dung-key{font-size:10px;color:#7289da;font-weight:700;flex-shrink:0}
+
+/* Export Button */
+.export-btn{display:flex;align-items:center;gap:8px;background:#1c1c26;border:1px solid #ffffff0d;border-radius:8px;padding:9px 14px;color:#72727d;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.15s;width:100%}
+.export-btn:hover{border-color:#5865f240;color:#a5b4fc}
+
+/* Swipe to delete */
+.swipe-wrap{position:relative;overflow:hidden;border-radius:12px;margin-bottom:10px}
+.swipe-wrap .card{margin-bottom:0;border-radius:12px;transition:transform .2s ease;will-change:transform}
+.swipe-action{position:absolute;right:0;top:0;bottom:0;width:80px;background:#ed4245;display:flex;align-items:center;justify-content:center;border-radius:0 12px 12px 0;flex-direction:column;gap:4px;opacity:0;transition:opacity .15s}
+.swipe-action span{font-size:18px}
+.swipe-action small{font-size:10px;color:#fff;font-weight:700}
 </style>
 </head>
 <body>
-<div id="app">Laden...</div>
+<div id="splash">
+  <div class="splash-logo">🎮</div>
+  <div class="splash-title">Gamer <em>Logbuch</em></div>
+  <div class="splash-sub">Dein WoW Companion</div>
+  <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+</div>
+<div id="app"></div>
 <script>
 var WC=[{k:'dk',n:'Todesritter',a:'TK',c:'#C41E3A'},{k:'dh',n:'Dämonenjäger',a:'DJ',c:'#A330C9'},{k:'druid',n:'Druide',a:'DR',c:'#FF7C0A'},{k:'evoker',n:'Rufer',a:'RU',c:'#33937F'},{k:'hunter',n:'Jäger',a:'JÄ',c:'#AAD372'},{k:'mage',n:'Magier',a:'MA',c:'#3FC7EB'},{k:'monk',n:'Mönch',a:'MÖ',c:'#00FF98'},{k:'paladin',n:'Paladin',a:'PA',c:'#F48CBA'},{k:'priest',n:'Priester',a:'PR',c:'#DDDDDD'},{k:'rogue',n:'Schurke',a:'SC',c:'#FFF468'},{k:'shaman',n:'Schamane',a:'SH',c:'#0070DD'},{k:'warlock',n:'Hexenmeister',a:'HX',c:'#8788EE'},{k:'warrior',n:'Krieger',a:'KR',c:'#C69B6D'}];
 var GS=[{k:'wow',l:'World of Warcraft',s:'WoW',c:'#ff7d0a',e:'⚔️',w:1},{k:'classic',l:'WoW Classic',s:'Classic',c:'#ffd700',e:'📜',w:1},{k:'hardcore',l:'WoW Hardcore',s:'HC',c:'#ed4245',e:'💀',w:1},{k:'elden',l:'Elden Ring',s:'ER',c:'#c9a84c',e:'🪦',w:0},{k:'ds',l:'Dark Souls',s:'DS',c:'#888',e:'🔥',w:0},{k:'cod',l:'Call of Duty',s:'CoD',c:'#5b8dd9',e:'🎯',w:0},{k:'ff14',l:'Final Fantasy XIV',s:'FF14',c:'#9b59b6',e:'🌙',w:0},{k:'destiny',l:'Destiny 2',s:'D2',c:'#e67e22',e:'🌌',w:0},{k:'other',l:'Anderes Spiel',s:'?',c:'#72767d',e:'🎮',w:0}];
@@ -190,14 +270,29 @@ function raceSide(race){
   return null;
 }
 
+
+var CLS_EMBLEM={
+  dk:'💀', dh:'👁️', druid:'🌙', evoker:'🐉', hunter:'🏹',
+  mage:'❄️', monk:'☯️', paladin:'⚔️', priest:'✨', rogue:'🗡️',
+  shaman:'⚡', warlock:'🔮', warrior:'🛡️'
+};
+
+
+var DUNGEONS=[
+  {id:'d1',n:'Ara-Kara',e:'🕷️'},{id:'d2',n:'Stadt der Fäden',e:'🕸️'},
+  {id:'d3',n:'Grim Batol',e:'🌋'},{id:'d4',n:'Halle der Tapferen',e:'⚔️'},
+  {id:'d5',n:'Mists of Tirna Scithe',e:'🌿'},{id:'d6',n:'The Necrotic Wake',e:'💀'},
+  {id:'d7',n:'Siege of Boralus',e:'⚓'},{id:'d8',n:'The Stonevault',e:'⛏️'}
+];
+
 function iw(k){return !!(GS.find(function(g){return g.k===k})||{}).w}
 function gi(k){return GS.find(function(g){return g.k===k})||GS[GS.length-1]}
 function ci(k){return WC.find(function(c){return c.k===k})||WC[0]}
 var KEY='gl6';
 function loadS(){try{var r=localStorage.getItem(KEY);if(!r)return null;return JSON.parse(r)}catch(e){localStorage.removeItem(KEY);return null}}
-function saveS(){try{localStorage.setItem(KEY,JSON.stringify({page:S.page,cat:S.cat,chars:S.chars,weekly:S.weekly,goals:S.goals,notes:S.notes,ach:S.ach,sel:S.sel,wow:S.wow,wtodos:S.wtodos}))}catch(e){}}
+function saveS(){try{localStorage.setItem(KEY,JSON.stringify({page:S.page,cat:S.cat,chars:S.chars,weekly:S.weekly,goals:S.goals,notes:S.notes,ach:S.ach,sel:S.sel,wow:S.wow,wtodos:S.wtodos,dungeons:S.dungeons}))}catch(e){}}
 var d=loadS()||{};
-var S={page:d.page||'chars',cat:d.cat||'Alle',chars:d.chars||[],weekly:d.weekly||{},goals:d.goals||[],notes:d.notes||[],ach:d.ach||{},sel:d.sel||null,wow:!!d.wow,wtodos:d.wtodos||{},search:'',modal:null,fab:false,editId:null,goldCharId:null};
+var S={page:d.page||'chars',cat:d.cat||'Alle',chars:d.chars||[],weekly:d.weekly||{},goals:d.goals||[],notes:d.notes||[],ach:d.ach||{},sel:d.sel||null,wow:!!d.wow,wtodos:d.wtodos||{},dungeons:d.dungeons||{},search:'',modal:null,fab:false,editId:null,goldCharId:null,expanded:{},dungeons:{},onboarded:!!localStorage.getItem('gl_onboarded')};
 if(S.chars.some(function(c){return iw(c.game)}))S.wow=true;
 function set(p){Object.keys(p).forEach(function(k){S[k]=p[k]});saveS();render()}
 function mk(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
@@ -211,15 +306,19 @@ function selEl(opts,val){var s=document.createElement('select');s.className='fi'
 function avEl(ch,sz){sz=sz||36;var e=dv('');styl(e,{width:sz+'px',height:sz+'px',borderRadius:'8px',flexShrink:0,display:'flex',alignItems:'center',justifyContent:'center',fontWeight:700});if(iw(ch.game)){var c=ci(ch.cls);styl(e,{background:c.c+'20',border:'1px solid '+c.c+'40',color:c.c,boxShadow:'0 0 10px '+c.c+'25',fontSize:sz>30?'14px':'11px'});e.textContent=c.a}else{var g=gi(ch.game);styl(e,{background:'#13131a',border:'1px solid #ffffff0d',fontSize:sz>30?'18px':'14px'});e.textContent=g.e}return e}
 function cbEl(checked,fn){
   var e=dv('cb'+(checked?' on':''));if(checked)e.textContent='✓';
-  e.onclick=function(){e.classList.add('pop');setTimeout(function(){e.classList.remove('pop')},200);fn()};
+  e.onclick=function(){e.classList.add('pop');setTimeout(function(){e.classList.remove('pop')},200);if(navigator.vibrate)navigator.vibrate(30);fn()};
   return e;
 }
 function chipsEl(w){
+  var wrap=dv('');
+  var divider=dv('');styl(divider,{height:'1px',background:'rgba(255,255,255,0.05)',margin:'6px 0 4px'});
+  wrap.appendChild(divider);
   var row=dv('');styl(row,{display:'flex',flexWrap:'wrap'});
   function ch(txt,col,on){var c=sp('chip',txt);styl(c,{background:on?col+'18':'#13131a',color:on?col:'#44445a',borderColor:on?col+'30':'#2a2a3a'});return c}
   var mp=w.mplus,rd=w.raidM||w.raidH||w.raidN,rl=w.raidM?'M':w.raidH?'H':'N',vf=(w.vault||0)>=3;
   ap(row,ch(mp?'M+✓'+(w.mplusLevel?' +'+w.mplusLevel:''):'M+ —','#7289da',mp),ch(rd?'Raid '+rl+' ✓':'Raid —','#57f287',rd),ch((w.vault||0)+'/3 Vault','#ffd700',vf));
-  return row;
+  wrap.appendChild(row);
+  return wrap;
 }
 function cpickerEl(sel,onChange){var g=dv('cgrid');WC.forEach(function(cls){var o=dv('copt'+(sel===cls.k?' on':''));if(sel===cls.k)styl(o,{borderColor:cls.c+'50'});ap(o,styl(sp('ca',cls.a),{color:cls.c}),sp('cn',cls.n));o.onclick=function(){onChange(cls.k)};g.appendChild(o)});return g}
 
@@ -267,13 +366,99 @@ function showToastIfNeeded(){
     ap(row,dot,name,todo);
     toast.appendChild(row);
   });
-  var appEl=document.getElementById("app");if(appEl)appEl.appendChild(toast);else document.body.appendChild(toast);
+  var hdrEl=document.querySelector(".hdr");if(hdrEl&&hdrEl.parentNode)hdrEl.parentNode.insertBefore(toast,hdrEl.nextSibling);else document.getElementById("app").appendChild(toast);
   // Auto-close nach 6 Sekunden
   setTimeout(function(){
     if(!toast.parentNode)return;
     toast.classList.add('out');
     setTimeout(function(){if(toast.parentNode)toast.parentNode.removeChild(toast)},300);
   },6000);
+}
+
+
+function getResetCountdown(){
+  var now=new Date();
+  // WoW EU Reset: Mittwoch 04:00 Uhr
+  var next=new Date(now);
+  var day=now.getDay(); // 0=So,1=Mo,2=Di,3=Mi,4=Do,5=Fr,6=Sa
+  var daysUntilWed=(3-day+7)%7;
+  if(daysUntilWed===0&&now.getHours()>=4)daysUntilWed=7;
+  next.setDate(now.getDate()+daysUntilWed);
+  next.setHours(4,0,0,0);
+  var diff=next-now;
+  var h=Math.floor(diff/3600000);
+  var m=Math.floor((diff%3600000)/60000);
+  if(h>=48){var d=Math.floor(h/24);return d+'d '+( h%24)+'h'}
+  if(h>=1)return h+'h '+m+'m';
+  return m+'m';
+}
+
+
+var OB_STEPS=[
+  {e:'🎮',t:'Willkommen!',d:'Gamer Logbuch ist dein persönlicher WoW-Companion. Behalte alle Chars, Weeklies und Fortschritte im Blick.'},
+  {e:'⚔️',t:'Charaktere anlegen',d:'Lege deine WoW-Helden an mit Klasse, Rasse, Itemlevel und Berufen. Bis zu 4 kostenlos!'},
+  {e:'📅',t:'Weekly im Blick',d:'Hake M+ Keys, Raids und die Große Kammer ab. Der Dungeon-Tracker zeigt welche Keys du schon gemacht hast.'}
+];
+var _obStep=0;
+function showOnboarding(){
+  if(S.onboarded)return;
+  var scr=dv('ob-screen');
+  var stepsWrap=dv('');
+  var dotsWrap=dv('ob-dots');
+  OB_STEPS.forEach(function(_,i){var dot=dv('ob-dot'+(i===0?' on':''));dotsWrap.appendChild(dot)});
+  function renderStep(){
+    stepsWrap.innerHTML='';
+    var s=OB_STEPS[_obStep];
+    var step=dv('ob-step active');
+    step.appendChild(mk('div','ob-emoji',s.e));
+    step.appendChild(mk('div','ob-title',s.t));
+    step.appendChild(mk('div','ob-desc',s.d));
+    stepsWrap.appendChild(step);
+    Array.from(dotsWrap.children).forEach(function(d,i){d.className='ob-dot'+(i===_obStep?' on':'')});
+    nextBtn.textContent=_obStep===OB_STEPS.length-1?'Los geht es! 🚀':'Weiter';
+  }
+  var nextBtn=bt('ob-next','Weiter',function(){
+    if(_obStep<OB_STEPS.length-1){_obStep++;renderStep()}
+    else{localStorage.setItem('gl_onboarded','1');S.onboarded=true;if(scr.parentNode)scr.parentNode.removeChild(scr)}
+  });
+  var skipBtn=bt('ob-skip','Überspringen',function(){localStorage.setItem('gl_onboarded','1');S.onboarded=true;if(scr.parentNode)scr.parentNode.removeChild(scr)});
+  ap(scr,stepsWrap,dotsWrap,nextBtn,skipBtn);
+  renderStep();
+  document.body.appendChild(scr);
+}
+
+
+function addSwipe(wrap, card, onDelete){
+  var startX=0,startY=0,curX=0,swiping=false,threshold=60;
+  card.addEventListener('touchstart',function(e){
+    startX=e.touches[0].clientX;startY=e.touches[0].clientY;curX=0;swiping=false;
+  },{passive:true});
+  card.addEventListener('touchmove',function(e){
+    var dx=e.touches[0].clientX-startX;
+    var dy=e.touches[0].clientY-startY;
+    if(!swiping&&Math.abs(dy)>Math.abs(dx))return; // vertikales Scrollen erlauben
+    swiping=true;
+    curX=Math.min(0,dx); // nur nach links
+    card.style.transform='translateX('+curX+'px)';
+    var action=wrap.querySelector('.swipe-action');
+    if(action)action.style.opacity=Math.min(1,Math.abs(curX)/threshold);
+  },{passive:true});
+  card.addEventListener('touchend',function(){
+    if(Math.abs(curX)>=threshold){
+      // Komplett rausswipen und löschen
+      card.style.transition='transform .25s ease';
+      card.style.transform='translateX(-100%)';
+      if(navigator.vibrate)navigator.vibrate([40,30,40]);
+      setTimeout(function(){onDelete()},250);
+    }else{
+      // Zurücksnappen
+      card.style.transition='transform .2s ease';
+      card.style.transform='translateX(0)';
+      var action=wrap.querySelector('.swipe-action');
+      if(action)action.style.opacity=0;
+    }
+    swiping=false;curX=0;
+  },{passive:true});
 }
 
 function showWow(){return S.wow||S.chars.some(function(c){return iw(c.game)})}
@@ -317,7 +502,8 @@ function pgChars(){
     var ww=iw(ch.game),c=ci(ch.cls),g=gi(ch.game),w=S.weekly[ch.id]||{};
     var card=dv('card');card.style.animationDelay=(i*0.05)+'s';
     if(ww){styl(card,{borderColor:c.c+'28',boxShadow:'0 0 20px '+c.c+'14,0 4px 20px #00000040',background:'linear-gradient(135deg,'+c.c+'0a,#1c1c26 40%)'});
-      var bar=dv('');styl(bar,{position:'absolute',left:0,top:0,bottom:0,width:'3px',background:c.c,opacity:'.7',borderRadius:'12px 0 0 12px'});card.appendChild(bar)}
+      var bar=dv('');styl(bar,{position:'absolute',left:0,top:0,bottom:0,width:'3px',background:c.c,opacity:'.7',borderRadius:'12px 0 0 12px'});card.appendChild(bar);
+      var embl=mk('div','cls-emblem',CLS_EMBLEM[ch.cls]||'');card.appendChild(embl);}
     var st=charStatus(ch);
     if(st){var dot=dv('status-dot dot-'+st);styl(dot,{position:'absolute',top:'10px',right:'10px'});card.appendChild(dot)}
     var row=dv('crow2');row.style.paddingLeft=ww?'20px':'14px';
@@ -372,7 +558,22 @@ function pgChars(){
       var ilVal=mk('div','ilvl-val',ch.ilvl||'—');
       var ilDec=bt('ilvl-dec','▼',null);
       (function(cid){
-        ilInc.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur+1)}):x})})};
+        ilInc.onclick=function(e){
+  e.stopPropagation();
+  var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;
+  set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur+1)}):x})});
+  // Glow-Animation auf dem iLvl-Val
+  setTimeout(function(){
+    var els=document.querySelectorAll('.ilvl-val');
+    els.forEach(function(el){el.classList.remove('ilvl-lvlup')});
+    // Finde das richtige Element
+    var cards=document.querySelectorAll('.card');
+    cards.forEach(function(card){
+      var iv=card.querySelector('.ilvl-val');
+      if(iv){iv.classList.add('ilvl-lvlup');setTimeout(function(){iv.classList.remove('ilvl-lvlup')},700)}
+    });
+  },50);
+};
         ilDec.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;if(cur>0)set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur-1)}):x})})};
       })(ch.id);
       ap(ilBox,ilInc,ilVal,ilDec);row.appendChild(ilBox);
@@ -394,8 +595,63 @@ function pgChars(){
     var edt=bt('editbtn','✏️',null);
     (function(cid){edt.onclick=function(e){e.stopPropagation();set({modal:'editchar',editId:cid,fab:false})}})(ch.id);
     row.appendChild(edt);row.appendChild(del);ap(card,row);
-    (function(cid){row.onclick=function(){set({sel:cid,page:sw?'weekly':'goals'})}})(ch.id);
-    wrap.appendChild(card);
+    // Swipe-Wrapper
+    var sw2=dv('swipe-wrap');
+    var sa=dv('swipe-action');ap(sa,mk('span','','🗑'),mk('small','','Löschen'));
+    sw2.appendChild(sa);sw2.appendChild(card);
+    // Chevron hinzufügen
+    var chev=sp('expand-chevron',S.expanded[ch.id]?'▲':'▼');
+    row.appendChild(chev);
+    (function(cid){row.onclick=function(){
+      var exp=Object.assign({},S.expanded);
+      exp[cid]=!exp[cid];
+      set({expanded:exp});
+    }})(ch.id);
+    // Ausgeklappter Bereich
+    if(S.expanded[ch.id]&&ww){
+      var expand=dv('card-expand');
+      // Chips: M+/Raid/Vault Status
+      var sec1=dv('expand-section');
+      sec1.appendChild(mk('div','expand-label','Weekly Status'));
+      [{label:'M+ Key',done:!!w.mplus,val:w.mplusLevel?'+'+w.mplusLevel:''},{label:'Raid',done:!!(w.raidN||w.raidH||w.raidM),val:w.raidM?'Mythisch':w.raidH?'Heroisch':w.raidN?'Normal':''},{label:'Große Kammer',done:(w.vault||0)>=3,val:(w.vault||0)+'/3'}].forEach(function(item){
+        var er=dv('expand-row');
+        var icon=sp('');icon.textContent=item.done?'✅':'⬜';icon.style.fontSize='13px';
+        var lbl=sp('');lbl.textContent=item.label;styl(lbl,{flex:1,color:item.done?'#44445a':'#dcddde',textDecoration:item.done?'line-through':'none'});
+        var val=sp('');val.textContent=item.val;styl(val,{fontSize:'11px',color:'#55556a'});
+        ap(er,icon,lbl,val);sec1.appendChild(er);
+      });
+      expand.appendChild(sec1);
+      // Gold
+      if(ch.gold&&ch.gold!='0'){
+        var sec2=dv('expand-section');
+        sec2.appendChild(mk('div','expand-label','Gold'));
+        var gr=dv('expand-row');
+        gr.appendChild(sp('','💰'));
+        var gv=sp('');gv.textContent=Number(ch.gold).toLocaleString('de-DE')+'g';styl(gv,{color:'#ffd700aa',fontWeight:600,marginLeft:'6px'});
+        gr.appendChild(gv);sec2.appendChild(gr);expand.appendChild(sec2);
+      }
+      // Zur Weekly-Seite Button
+      var goBtn=bt('',sw?'→ Weekly öffnen':'→ Ziele öffnen',null);
+      styl(goBtn,{background:'#5865f218',border:'1px solid #5865f230',borderRadius:'6px',color:'#7289da',fontSize:'11px',fontWeight:600,padding:'5px 12px',cursor:'pointer',fontFamily:'inherit',marginTop:'4px'});
+      (function(cid){goBtn.onclick=function(e){e.stopPropagation();set({sel:cid,page:sw?'weekly':'goals',expanded:{}})}})(ch.id);
+      expand.appendChild(goBtn);
+      card.appendChild(expand);
+    }
+    (function(cid,cname,sw2ref){
+      addSwipe(sw2ref,card,function(){
+        var ov=dv('confirm-overlay');
+        var box=dv('confirm-box');
+        var title=mk('div','confirm-title','Charakter löschen?');
+        var sub=mk('div','confirm-sub','');sub.innerHTML='<span class="confirm-name">'+cname+'</span> wird unwiderruflich gelöscht.';
+        var btnRow=dv('confirm-row');
+        var yes=bt('confirm-yes','Ja, löschen',function(){document.body.removeChild(ov);set({chars:S.chars.filter(function(x){return x.id!==cid})})});
+        var no=bt('confirm-no','Abbrechen',function(){document.body.removeChild(ov)});
+        ap(btnRow,no,yes);ap(box,title,sub,btnRow);ap(ov,box);
+        ov.onclick=function(ev){if(ev.target===ov)document.body.removeChild(ov)};
+        document.body.appendChild(ov);
+      });
+    })(ch.id,ch.name,sw2);
+    wrap.appendChild(sw2);
   });
   return wrap;
 }
@@ -461,7 +717,30 @@ function pgWeekly(){
     row.appendChild(lbl);tbody.appendChild(row);
   });
   tcard.appendChild(tbody);
-  ap(wrap,card,tcard);return wrap;
+  // Dungeon Tracker
+  var dcard=dv('card');dcard.style.animationDelay='0.15s';
+  var dhead=dv('');styl(dhead,{padding:'12px 14px 0'});
+  var dhdr=dv('');styl(dhdr,{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'4px'});
+  dhdr.appendChild(mk('div','stit','🗺️  M+ Dungeon Tracker'));
+  var dDone=DUNGEONS.filter(function(d){return S.dungeons[sid+'_'+d.id]}).length;
+  var dPct=sp('',''+dDone+'/'+DUNGEONS.length);styl(dPct,{fontSize:'11px',color:'#7289da',fontWeight:700});
+  dhdr.appendChild(dPct);dhead.appendChild(dhdr);
+  var dpb=dv('pbar-wrap');var dpbf=dv('pbar-fill');dpbf.style.width=Math.round(dDone/DUNGEONS.length*100)+'%';dpb.appendChild(dpbf);dhead.appendChild(dpb);
+  dcard.appendChild(dhead);
+  var dgrid=dv('dung-grid');dgrid.style.padding='8px 14px 14px';
+  DUNGEONS.forEach(function(d){
+    var done=!!S.dungeons[sid+'_'+d.id];
+    var dc=dv('dung-card'+(done?' done':''));
+    dc.appendChild(mk('span','dung-check',done?'✅':'⬜'));
+    dc.appendChild(mk('span','dung-name',d.e+' '+d.n));
+    (function(key){dc.onclick=function(){
+      if(navigator.vibrate)navigator.vibrate(20);
+      var nd=Object.assign({},S.dungeons);nd[key]=!nd[key];set({dungeons:nd});
+    }})(sid+'_'+d.id);
+    dgrid.appendChild(dc);
+  });
+  dcard.appendChild(dgrid);
+  ap(wrap,card,tcard,dcard);return wrap;
 }
 
 function pgGoals(){
@@ -517,6 +796,15 @@ function pgAch(){
 function pgNotes(){
   var f=S.notes.slice();if(S.search)f=f.filter(function(n){return n.title.toLowerCase().indexOf(S.search.toLowerCase())>=0||(n.body||'').toLowerCase().indexOf(S.search.toLowerCase())>=0});
   var wrap=dv('');var hdr=dv('rowhdr');ap(hdr,sp('ptitle','Notizen'),styl(sp('',''+S.notes.length+' Notizen'),{marginLeft:'auto',fontSize:'11px',color:'#44445a'}));wrap.appendChild(hdr);
+  // Export Button
+  var expBtn=bt('export-btn','',function(){
+    var data=JSON.stringify({chars:S.chars,weekly:S.weekly,goals:S.goals,notes:S.notes,ach:S.ach,wtodos:S.wtodos,dungeons:S.dungeons},null,2);
+    var blob=new Blob([data],{type:'application/json'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');a.href=url;a.download='gamer-logbuch-backup.json';a.click();URL.revokeObjectURL(url);
+  });
+  expBtn.innerHTML='📦 Daten exportieren (Backup)';
+  wrap.appendChild(expBtn);
   if(!f.length){var em=dv('empty');ap(em,mk('div','','📄'),mk('p','','Keine Notizen. Tippe auf + um eine Notiz zu erstellen.'));wrap.appendChild(em)}
   else f.forEach(function(n,i){
     var card=dv('card');card.style.cssText+='padding:13px 15px';card.style.animationDelay=(i*0.05)+'s';
@@ -731,6 +1019,9 @@ function render(){
   var app=document.getElementById('app');app.innerHTML='';
   var nv=navDef(),vp=nv.find(function(n){return n.k===S.page})?S.page:nv[0].k,sw=showWow();
   var hdr=dv('hdr');
+  // Klassenfarbe des ersten WoW-Chars in Header
+  var firstWow=S.chars.find(function(c){return iw(c.game)});
+  if(firstWow){var fc=ci(firstWow.cls);hdr.style.setProperty('--cls-color',fc.c);hdr.classList.add('cls-pulse')}
   var ht=mk('div','htitle','');ht.innerHTML='Gamer <em>Logbuch</em>';
   if(sw){var wb=sp('wow-badge','WoW');ht.appendChild(wb)}hdr.appendChild(ht);
   var sr=dv('srow');var sico=sp('','🔍');sico.style.cssText='color:#44445a;flex-shrink:0';sr.appendChild(sico);
@@ -739,6 +1030,17 @@ function render(){
   hdr.appendChild(sr);
   var cEl=dv('cats');['Alle','WoW','MMO','RPG','Shooter','Andere'].forEach(function(c){var ct=mk('div','cat'+(S.cat===c?' on':''),c);ct.onclick=function(){set({cat:c})};cEl.appendChild(ct)});
   hdr.appendChild(cEl);app.appendChild(hdr);
+  // Weekly Reset Bar (nur wenn WoW aktiv)
+  if(sw){
+    var rb=dv('reset-bar');
+    var rlbl=dv('reset-label');
+    var rdot=dv('reset-dot');
+    rlbl.appendChild(rdot);
+    rlbl.appendChild(document.createTextNode('Nächster Weekly Reset'));
+    var rtime=mk('span','reset-time',getResetCountdown());
+    ap(rb,rlbl,rtime);
+    app.appendChild(rb);
+  }
   var con=dv('content');
   if(vp==='chars')con.appendChild(pgChars());else if(vp==='weekly')con.appendChild(pgWeekly());else if(vp==='goals')con.appendChild(pgGoals());else if(vp==='achievements')con.appendChild(pgAch());else if(vp==='notes')con.appendChild(pgNotes());
   app.appendChild(con);
@@ -749,7 +1051,15 @@ function render(){
   if(S.modal){var ov=dv('ov');ov.onclick=function(e){if(e.target===ov)set({modal:null})};if(S.modal==='char')ov.appendChild(mChar());else if(S.modal==='goal')ov.appendChild(mGoal());else if(S.modal==='note')ov.appendChild(mNote());else if(S.modal==='editchar')ov.appendChild(mEditChar());else if(S.modal==='upgrade')ov.appendChild(modalUpgrade());else if(S.modal==='gold')ov.appendChild(modalGold(S.goldCharId));app.appendChild(ov)}
 }
 render();
-showToastIfNeeded();
+// Splash ausblenden nach Ladebalken-Animation
+setTimeout(function(){
+  var splash=document.getElementById('splash');
+  if(splash){
+    splash.classList.add('hide');
+    setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash)},500);
+  }
+  showToastIfNeeded();showOnboarding();
+},1400);
 </script>
 </body>
 </html>

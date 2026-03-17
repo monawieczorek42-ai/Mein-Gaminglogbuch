@@ -33,7 +33,7 @@ html,body{height:100%;overflow:hidden;background:linear-gradient(160deg,#0d0d14 
 .nb.on{color:#7289da;font-weight:700;position:relative}.nb.on::after{content:'';position:absolute;top:0;left:20%;right:20%;height:3px;background:linear-gradient(90deg,#5865f2,#7289da);border-radius:0 0 3px 3px}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .card{background:linear-gradient(180deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0) 100%);border-radius:12px;border:1px solid rgba(255,255,255,0.08);margin-bottom:10px;position:relative;overflow:hidden;animation:fadeUp .3s ease both;transition:transform .15s,box-shadow .15s;cursor:pointer}.card:active{transform:scale(0.975);box-shadow:none!important}
-.crow2{padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.crow2{padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;min-height:80px}
 .ptitle{font-size:16px;font-weight:800;color:#fff;letter-spacing:1px;text-transform:uppercase}
 .rowhdr{display:flex;align-items:center;margin-bottom:14px;margin-top:10px}
 .empty{text-align:center;padding:50px 20px;color:#44445a}.empty .eico{font-size:48px;margin-bottom:16px;opacity:.4}.empty p{font-size:13px;line-height:1.7;margin-bottom:20px}.empty-btn{background:#5865f228;border:1px solid #5865f255;border-radius:10px;padding:10px 22px;color:#7289da;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
@@ -109,19 +109,19 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 .av-wrap{display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0}.edit-row{display:flex;gap:6px;margin-top:8px}.edit-row .fi-sm{flex:1}
 
 /* iLvl Box */
-.ilvl-box{display:flex;flex-direction:column;align-items:center;gap:5px;margin-right:2px;flex-shrink:0}
-.ilvl-inc{background:rgba(255,215,0,0.08);border:1px solid rgba(255,215,0,0.2);border-radius:3px;color:#ffd700aa;font-size:9px;font-weight:600;padding:0px 5px;cursor:pointer;line-height:1.5;font-family:inherit;transition:.15s;user-select:none}
+.ilvl-box{display:flex;flex-direction:row;align-items:center;gap:4px;margin-right:2px;flex-shrink:0}
+.ilvl-inc{background:none;border:none;color:#ffd700aa;font-size:7px;font-weight:600;padding:0 3px;cursor:pointer;line-height:1.5;font-family:inherit;transition:.15s;user-select:none}.ilvl-dec{background:none;border:none;color:#ffd70066;font-size:7px;font-weight:600;padding:0 3px;cursor:pointer;line-height:1.5;font-family:inherit;transition:.15s;user-select:none}
 .ilvl-inc:active{background:rgba(255,215,0,0.25);transform:scale(0.92)}
 .ilvl-val{font-weight:500;font-size:15px;color:#ffd700cc;line-height:1;text-align:center}
 /* Status Dot */
-.status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor}
+.status-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;box-shadow:0 0 4px currentColor}
 .dot-green{background:#57f287;color:#57f287}
 .dot-yellow{background:#faa61a;color:#faa61a}
 .dot-red{background:#ed4245;color:#ed4245}
 /* Toast Banner */
 @keyframes toastIn{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
 @keyframes toastOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-16px)}}
-.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:2000;background:#1a1a28;border:1px solid #5865f255;border-radius:14px;padding:14px 18px 16px;max-width:340px;width:calc(100% - 32px);box-shadow:0 8px 32px #00000088;animation:toastIn .3s ease both}
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:2000;background:#1a1a28;border:1px solid #5865f255;border-radius:14px;padding:14px 16px 16px;width:min(340px,calc(100vw - 32px));max-width:440px;box-shadow:0 8px 32px #00000088;animation:toastIn .3s ease both}
 .toast.out{animation:toastOut .3s ease both}
 .toast-title{font-size:13px;font-weight:700;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .toast-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #ffffff08;font-size:12px}
@@ -129,6 +129,36 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 .toast-char{color:#dcddde;font-weight:600;flex:1}
 .toast-tasks{color:#55556a;font-size:11px}
 .toast-close{margin-left:auto;background:none;border:none;color:#44445a;cursor:pointer;font-size:16px;padding:0;font-family:inherit;line-height:1}
+
+.btn-pro{width:100%;background:linear-gradient(135deg,#c9a84c 0%,#ffea00 100%);color:#000;font-weight:800;border:none;border-radius:10px;padding:13px;font-size:15px;cursor:pointer;margin-top:10px;font-family:inherit;box-shadow:0 0 20px rgba(201,168,76,0.4);transform:scale(1.03);transition:.15s;letter-spacing:.3px}
+.btn-pro:active{transform:scale(0.99)}
+.upgrade-title{font-size:17px;font-weight:800;color:#c9a84c;text-align:center;margin-bottom:10px;letter-spacing:.5px}
+.upgrade-sub{font-size:13px;color:#72727d;text-align:center;line-height:1.6;margin-bottom:16px}
+.upgrade-perks{list-style:none;margin-bottom:18px;display:flex;flex-direction:column;gap:8px}
+.upgrade-perk{display:flex;align-items:center;gap:10px;background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.15);border-radius:8px;padding:9px 12px;font-size:13px;color:#dcddde}
+.upgrade-perk span{font-size:16px}
+.upgrade-limit{font-size:11px;color:#44445a;text-align:center;margin-top:8px}
+
+.btn-pro{width:100%;background:linear-gradient(135deg,#c9a84c 0%,#ffea00 100%);color:#000;font-weight:800;border:none;border-radius:10px;padding:13px;font-size:15px;cursor:pointer;margin-top:10px;font-family:inherit;box-shadow:0 0 20px rgba(201,168,76,0.4);transform:scale(1.03);transition:.15s;letter-spacing:.5px}
+.btn-pro:active{transform:scale(0.98)}
+.upgrade-feature{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #ffffff08;font-size:13px;color:#dcddde}
+.upgrade-feature:last-child{border-bottom:none}
+.upgrade-feature-icon{font-size:18px;width:28px;text-align:center;flex-shrink:0}
+.upgrade-limit{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.25);border-radius:10px;padding:10px 14px;margin-bottom:16px;font-size:12px;color:#c9a84c;text-align:center;line-height:1.6}
+
+.gold-wrap{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;margin-right:6px}
+.gold-ico{font-size:16px;line-height:1}
+.gold-val{font-size:11px;font-weight:600;color:#ffd700cc;text-align:center;line-height:1;min-width:36px}
+.gold-btn{background:none;border:none;color:#ffd70066;font-size:8px;cursor:pointer;padding:0 2px;font-family:inherit;line-height:1.4;user-select:none;transition:.15s}
+.gold-btn:active{color:#ffd700;transform:scale(0.9)}
+.gold-row{display:flex;align-items:center;gap:1px}
+
+.gold-input-wrap{display:flex;align-items:center;gap:8px;margin:14px 0}
+.gold-input{flex:1;background:#13131a;border:1px solid #ffd70044;border-radius:8px;padding:10px 12px;color:#ffd700;font-size:18px;font-weight:700;outline:none;font-family:inherit;text-align:center}
+.gold-input:focus{border-color:#ffd700aa}
+.gold-quick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.gold-qbtn{flex:1;min-width:60px;background:#ffd70012;border:1px solid #ffd70030;border-radius:6px;color:#ffd700aa;font-size:11px;font-weight:600;padding:6px 4px;cursor:pointer;font-family:inherit;transition:.15s;text-align:center}
+.gold-qbtn:active{background:#ffd70025;color:#ffd700}
 </style>
 </head>
 <body>
@@ -140,6 +170,26 @@ var ACH=[{id:'a1',e:'⚔️',n:'Erster M+10 Key',d:'Schließe einen +10 ab',m:1}
 var WTODOS=[{id:'wb',l:'Weltboss'},{id:'delves',l:'8 Delves'},{id:'raid',l:'Raid Clear'},{id:'vault',l:'Große Kammer'},{id:'m5',l:'M+5 abschließen'},{id:'pvp',l:'PvP Weeklies'}];
 
 var PROFS=['Alchemie','Bergbau','Juwelenschleifen','Kochkunst','Kräuterkunde','Lederverarbeitung','Maßschneiderei','Schmiedekunst','Verzauberung','Inschriftenkunde','Ingenieurskunst','Angeln','Archäologie'];
+
+var RACES={
+  horde:['Orc','Troll','Tauren','Untoter','Blutelf','Goblin','Pandaren (Horde)','Mag\u0027har Orc','Zandalari-Troll','Vulpera','Unterirdischer','Haranir'],
+  alliance:['Mensch','Zwerg','Nachtelfe','Gnom','Draenei','Worgen','Pandaren (Allianz)','Void-Elf','Lichtgeschmiedeter Draenei','Kul Tiras-Mensch','Mechagnom','Dracthyr (Allianz)'],
+  neutral:['Dracthyr']
+};
+var RACE_COLOR={horde:'#e05050',alliance:'#5080e0'};
+function raceList(){
+  var list=[];
+  RACES.alliance.forEach(function(r){list.push({v:r,l:'🔵 '+r,side:'alliance'})});
+  RACES.horde.forEach(function(r){list.push({v:r,l:'🔴 '+r,side:'horde'})});
+  return list;
+}
+function raceSide(race){
+  if(!race)return null;
+  if(RACES.alliance.indexOf(race)>=0)return'alliance';
+  if(RACES.horde.indexOf(race)>=0)return'horde';
+  return null;
+}
+
 function iw(k){return !!(GS.find(function(g){return g.k===k})||{}).w}
 function gi(k){return GS.find(function(g){return g.k===k})||GS[GS.length-1]}
 function ci(k){return WC.find(function(c){return c.k===k})||WC[0]}
@@ -147,7 +197,7 @@ var KEY='gl6';
 function loadS(){try{var r=localStorage.getItem(KEY);if(!r)return null;return JSON.parse(r)}catch(e){localStorage.removeItem(KEY);return null}}
 function saveS(){try{localStorage.setItem(KEY,JSON.stringify({page:S.page,cat:S.cat,chars:S.chars,weekly:S.weekly,goals:S.goals,notes:S.notes,ach:S.ach,sel:S.sel,wow:S.wow,wtodos:S.wtodos}))}catch(e){}}
 var d=loadS()||{};
-var S={page:d.page||'chars',cat:d.cat||'Alle',chars:d.chars||[],weekly:d.weekly||{},goals:d.goals||[],notes:d.notes||[],ach:d.ach||{},sel:d.sel||null,wow:!!d.wow,wtodos:d.wtodos||{},search:'',modal:null,fab:false,editId:null};
+var S={page:d.page||'chars',cat:d.cat||'Alle',chars:d.chars||[],weekly:d.weekly||{},goals:d.goals||[],notes:d.notes||[],ach:d.ach||{},sel:d.sel||null,wow:!!d.wow,wtodos:d.wtodos||{},search:'',modal:null,fab:false,editId:null,goldCharId:null};
 if(S.chars.some(function(c){return iw(c.game)}))S.wow=true;
 function set(p){Object.keys(p).forEach(function(k){S[k]=p[k]});saveS();render()}
 function mk(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
@@ -261,7 +311,7 @@ function pgChars(){
   if(!f.length){var em=dv('empty');
     var eico=mk('div','','🎮');eico.className='eico';em.appendChild(eico);
     em.appendChild(mk('p','','Noch keine Charaktere.\nLege deinen ersten Helden an!'));
-    var ebtn=bt('empty-btn','+ Charakter hinzufügen',function(){set({modal:'char',fab:false})});
+    var ebtn=bt('empty-btn','+ Charakter hinzufügen',function(){set({modal:S.chars.length>=4?'upgrade':'char',fab:false})});
     em.appendChild(ebtn);wrap.appendChild(em)}
   else f.forEach(function(ch,i){
     var ww=iw(ch.game),c=ci(ch.cls),g=gi(ch.game),w=S.weekly[ch.id]||{};
@@ -271,20 +321,46 @@ function pgChars(){
     var st=charStatus(ch);
     if(st){var dot=dv('status-dot dot-'+st);styl(dot,{position:'absolute',top:'10px',right:'10px'});card.appendChild(dot)}
     var row=dv('crow2');row.style.paddingLeft=ww?'20px':'14px';
-    row.appendChild(avEl(ch,38));
+    var avGoldWrap=dv('');styl(avGoldWrap,{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'8px',flexShrink:0});
+    avGoldWrap.appendChild(avEl(ch,38));
+    if(ww){
+      var gIco=mk('div','','💰');
+      styl(gIco,{fontSize:'12px',cursor:'pointer',lineHeight:1,textAlign:'center',opacity:'.85'});
+      (function(cid){gIco.onclick=function(e){e.stopPropagation();set({modal:'gold',goldCharId:cid,fab:false})}})(ch.id);
+      var gVal=mk('div','gold-val',ch.gold&&ch.gold!='0'?Number(ch.gold).toLocaleString('de-DE')+'g':'—');
+      var gRow=dv('gold-row');
+      var gUp=bt('gold-btn','▲',null);
+      var gDn=bt('gold-btn','▼',null);
+      (function(cid){
+        gUp.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).gold)||0;set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{gold:String(cur+100)}):x})})};
+        gDn.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).gold)||0;if(cur>=100)set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{gold:String(cur-100)}):x})})};
+      })(ch.id);
+      ap(gRow,gUp,gDn);
+      var gWrap=dv('');styl(gWrap,{display:'flex',flexDirection:'column',alignItems:'center',gap:'1px',marginTop:'4px'});
+      ap(gWrap,gIco,gVal,gRow);
+      avGoldWrap.appendChild(gWrap);
+    }
+    row.appendChild(avGoldWrap);
     var info=dv('');styl(info,{flex:1,minWidth:0});
     // Name line with badges
     var nl=dv('');styl(nl,{fontWeight:700,fontSize:'14px',color:ww?c.c:'#e8e8f0',display:'flex',alignItems:'center',gap:'6px',flexWrap:'wrap'});
     nl.appendChild(document.createTextNode(ch.name));
     if(ww&&ch.mscore){nl.appendChild(sp('score-badge','⚡ '+ch.mscore))}
     if(ww&&ch.active){nl.appendChild(sp('badge-active','● Aktiv'))}
-    if(ww&&g){var bdg=sp('');bdg.textContent=g.s;styl(bdg,{fontSize:'9px',background:g.c+'18',color:g.c,border:'1px solid '+g.c+'30',borderRadius:'4px',padding:'1px 6px',fontWeight:700});nl.appendChild(bdg)}
+    // WoW-Badge entfernt (redundant)
     info.appendChild(nl);
     if(ww){
       var sub=mk('div','','');styl(sub,{fontSize:'11px',color:'#44445a',marginBottom:'2px'});
-      var subTxt=c.n+' · '+g.s+' · iLvl '+(ch.ilvl||'—');
+            var subTxt=c.n+' · '+g.s+' · iLvl '+(ch.ilvl||'—');
       if(ch.prof1||ch.prof2){var profs=[ch.prof1,ch.prof2].filter(Boolean).join(' & ');subTxt+=' · '+profs}
       sub.textContent=subTxt;
+      if(ch.race){
+        var raceSp=document.createElement('span');
+        var rSide=raceSide(ch.race);
+        raceSp.style.color=rSide?RACE_COLOR[rSide]:'#888';
+        raceSp.textContent=' · '+ch.race;
+        sub.appendChild(raceSp);
+      }
       ap(info,sub,chipsEl(w));
     }
     else{var sub2=mk('div','','');styl(sub2,{fontSize:'11px',color:'#44445a'});sub2.textContent=g.l+(ch.role?' · '+ch.role:'');info.appendChild(sub2)}
@@ -294,12 +370,12 @@ function pgChars(){
       var ilBox=dv('ilvl-box');
       var ilInc=bt('ilvl-inc','▲',null);
       var ilVal=mk('div','ilvl-val',ch.ilvl||'—');
-      (function(cid){ilInc.onclick=function(e){
-        e.stopPropagation();
-        var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;
-        set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur+1)}):x})});
-      }})(ch.id);
-      ap(ilBox,ilInc,ilVal);row.appendChild(ilBox);
+      var ilDec=bt('ilvl-dec','▼',null);
+      (function(cid){
+        ilInc.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur+1)}):x})})};
+        ilDec.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;if(cur>0)set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur-1)}):x})})};
+      })(ch.id);
+      ap(ilBox,ilInc,ilVal,ilDec);row.appendChild(ilBox);
     }
     var del=bt('delbtn','✕',null);
     (function(cid,cname){del.onclick=function(e){
@@ -459,7 +535,7 @@ function pgNotes(){
 
 // ── MODALS ────────────────────────────────────────────────────────────────────
 function mChar(){
-  var f={name:'',game:'wow',cls:'warrior',ilvl:'',mscore:'',role:'',active:false,prof1:'',prof2:''};
+  var f={name:'',game:'wow',cls:'warrior',ilvl:'',mscore:'',role:'',active:false,prof1:'',prof2:'',race:'',gold:'0'};
   var wrap=dv('modal');wrap.appendChild(mk('div','mtit','Charakter hinzufügen'));
   function rb(){
     while(wrap.children.length>1)wrap.removeChild(wrap.lastChild);
@@ -471,6 +547,11 @@ function mChar(){
       var fg3=dv('fg');fg3.appendChild(mk('label','fl','Klasse'));var pw=dv('');
       function rp(){pw.innerHTML='';pw.appendChild(cpickerEl(f.cls,function(k){f.cls=k;rp()}));var sc=ci(f.cls);var h=mk('div','hint','● '+sc.n);h.style.color=sc.c;pw.appendChild(h)}
       rp();fg3.appendChild(pw);wrap.appendChild(fg3);
+      // Rasse
+      var fgRace=dv('fg');fgRace.appendChild(mk('label','fl','Rasse'));
+      var raceList2=raceList();
+      var rs=selEl([{v:'',l:'— Rasse wählen —'}].concat(raceList2.map(function(r){return{v:r.v,l:r.l}})),f.race||'');
+      rs.onchange=function(e){f.race=e.target.value};fgRace.appendChild(rs);wrap.appendChild(fgRace);
       // iLvl + Score row
       var fgRow=dv('fg');fgRow.appendChild(mk('label','fl','iLvl & M+ Score'));
       var row2=dv('');styl(row2,{display:'flex',gap:'8px'});
@@ -542,6 +623,9 @@ function mEditChar(){
       pe1.onchange=function(e){f.prof1=e.target.value};
       pe2.onchange=function(e){f.prof2=e.target.value};
       ap(profRowE,pe1,pe2);fgPe.appendChild(profRowE);wrap.appendChild(fgPe);
+      var fgRaceE=dv('fg');fgRaceE.appendChild(mk('label','fl','Rasse'));
+      var rse=selEl([{v:'',l:'— Rasse wählen —'}].concat(raceList().map(function(r){return{v:r.v,l:r.l}})),f.race||'');
+      rse.onchange=function(e){f.race=e.target.value};fgRaceE.appendChild(rse);wrap.appendChild(fgRaceE);
     }else{
       var fg4=dv('fg');fg4.appendChild(mk('label','fl','Klasse / Rolle'));
       var ri=inpEl('text',f.role||'','z.B. Tank','fi');ri.oninput=function(e){f.role=e.target.value};fg4.appendChild(ri);wrap.appendChild(fg4);
@@ -553,6 +637,92 @@ function mEditChar(){
     wrap.appendChild(bt('bs','Abbrechen',function(){set({modal:null,editId:null})}));
   }
   rb();return wrap;
+}
+
+
+function modalUpgrade(){
+  var wrap=dv('modal');
+  var title=mk('div','upgrade-title','🌟 PRO VERSION FREISCHALTEN');
+  var sub=mk('div','upgrade-sub','Du hast das kostenlose Limit von 4 Helden erreicht.\nSchalte unbegrenzte Slots für alle deine Twinks frei!');
+  var perks=mk('ul','upgrade-perks','');
+  [{e:'🚀',t:'Unbegrenzte Charakter-Slots'},{e:'📊',t:'Erweiterte Statistiken & M+ Tracker'},{e:'☁️',t:'Cloud-Sync (In Kürze)'}].forEach(function(p){
+    var li=mk('li','upgrade-perk','');
+    li.appendChild(mk('span','',p.e));
+    li.appendChild(document.createTextNode(p.t));
+    perks.appendChild(li);
+  });
+  var buyBtn=bt('btn-pro','Jetzt für 3,99€ freischalten',function(){
+    alert('Vielen Dank! Das Bezahlsystem wird in Kürze aktiviert.');
+  });
+  var laterBtn=bt('bs','Vielleicht später',function(){set({modal:null})});
+  var limit=mk('div','upgrade-limit','✓ Einmaliger Kauf · Keine Abos · Keine versteckten Kosten');
+  ap(wrap,title,sub,perks,buyBtn,laterBtn,limit);
+  return wrap;
+}
+
+
+function modalUpgrade(){
+  var wrap=dv('modal');
+  // Titel
+  var title=mk('div','mtit','');
+  title.innerHTML='<span style="background:linear-gradient(135deg,#c9a84c,#ffea00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">🌟 PRO VERSION</span>';
+  wrap.appendChild(title);
+  // Limit-Hinweis
+  var hint=mk('div','upgrade-limit','Du hast das kostenlose Limit von 4 Helden erreicht. Schalte unbegrenzte Slots für alle deine Twinks frei!');
+  wrap.appendChild(hint);
+  // Feature-Liste
+  var features=[
+    {icon:'🚀',text:'Unbegrenzte Charakter-Slots'},
+    {icon:'📊',text:'Erweiterte Statistiken & M+ Tracker'},
+    {icon:'☁️',text:'Cloud-Sync (In Kürze)'}
+  ];
+  var fList=dv('');styl(fList,{marginBottom:'16px'});
+  features.forEach(function(f){
+    var row=dv('upgrade-feature');
+    row.appendChild(mk('span','upgrade-feature-icon',f.icon));
+    row.appendChild(mk('span','',f.text));
+    fList.appendChild(row);
+  });
+  wrap.appendChild(fList);
+  // Gold-Button
+  var proBtn=bt('btn-pro','✨  Jetzt für 3,99€ freischalten',function(){
+    alert('Vielen Dank! Das Bezahlsystem wird in Kürze aktiviert.');
+  });
+  wrap.appendChild(proBtn);
+  // Abbrechen
+  wrap.appendChild(bt('bs','Vielleicht später',function(){set({modal:null})}));
+  return wrap;
+}
+
+
+function modalGold(cid){
+  var ch=S.chars.find(function(x){return x.id===cid});
+  if(!ch)return dv('modal');
+  var wrap=dv('modal');
+  var title=mk('div','mtit','💰 Gold — '+ch.name);
+  wrap.appendChild(title);
+  var lbl=mk('div','fl','Aktuelles Gold');lbl.style.marginBottom='4px';wrap.appendChild(lbl);
+  var inputWrap=dv('gold-input-wrap');
+  var inp=document.createElement('input');
+  inp.type='number';inp.className='gold-input';inp.value=ch.gold||'0';inp.placeholder='0';inp.min='0';
+  inputWrap.appendChild(inp);wrap.appendChild(inputWrap);
+  // Schnell-Buttons
+  var ql=mk('div','fl','Schnell hinzufügen');ql.style.marginBottom='6px';wrap.appendChild(ql);
+  var quickRow=dv('gold-quick');
+  [1000,5000,10000,50000,100000].forEach(function(v){
+    var qb=bt('gold-qbtn','+'+v.toLocaleString('de-DE')+'g',function(){
+      var cur=parseInt(inp.value)||0;
+      inp.value=String(cur+v);
+    });
+    quickRow.appendChild(qb);
+  });
+  wrap.appendChild(quickRow);
+  wrap.appendChild(bt('bp','💰 Speichern',function(){
+    var val=Math.max(0,parseInt(inp.value)||0);
+    set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{gold:String(val)}):x}),modal:null,goldCharId:null});
+  }));
+  wrap.appendChild(bt('bs','Abbrechen',function(){set({modal:null,goldCharId:null})}));
+  return wrap;
 }
 
 // ── RENDER ────────────────────────────────────────────────────────────────────
@@ -573,10 +743,10 @@ function render(){
   if(vp==='chars')con.appendChild(pgChars());else if(vp==='weekly')con.appendChild(pgWeekly());else if(vp==='goals')con.appendChild(pgGoals());else if(vp==='achievements')con.appendChild(pgAch());else if(vp==='notes')con.appendChild(pgNotes());
   app.appendChild(con);
   var fw=dv('fabw');
-  if(S.fab){var fm=dv('fabm');[{l:'Neuen Charakter',m:'char'},{l:sw?'Weekly starten':'Ziel hinzufügen',m:'goal'},{l:'Notiz schreiben',m:'note'}].forEach(function(it){var b=bt('fabi',it.l,null);(function(m){b.onclick=function(){set({modal:m,fab:false})}})(it.m);fm.appendChild(b)});fw.appendChild(fm)}
+  if(S.fab){var fm=dv('fabm');[{l:'Neuen Charakter',m:S.chars.length>=4?'upgrade':'char'},{l:sw?'Weekly starten':'Ziel hinzufügen',m:'goal'},{l:'Notiz schreiben',m:'note'}].forEach(function(it){var b=bt('fabi',it.l,null);(function(m){b.onclick=function(){set({modal:m,fab:false})}})(it.m);fm.appendChild(b)});fw.appendChild(fm)}
   var fb=bt('fabb'+(S.fab?' open':''),S.fab?'×':'+',function(){set({fab:!S.fab})});fw.appendChild(fb);app.appendChild(fw);
   var ne=dv('nav');nv.forEach(function(n){var b=bt('nb'+(vp===n.k?' on':''),n.l,null);(function(k){b.onclick=function(){set({page:k,fab:false})}})(n.k);ne.appendChild(b)});app.appendChild(ne);
-  if(S.modal){var ov=dv('ov');ov.onclick=function(e){if(e.target===ov)set({modal:null})};if(S.modal==='char')ov.appendChild(mChar());else if(S.modal==='goal')ov.appendChild(mGoal());else if(S.modal==='note')ov.appendChild(mNote());else if(S.modal==='editchar')ov.appendChild(mEditChar());app.appendChild(ov)}
+  if(S.modal){var ov=dv('ov');ov.onclick=function(e){if(e.target===ov)set({modal:null})};if(S.modal==='char')ov.appendChild(mChar());else if(S.modal==='goal')ov.appendChild(mGoal());else if(S.modal==='note')ov.appendChild(mNote());else if(S.modal==='editchar')ov.appendChild(mEditChar());else if(S.modal==='upgrade')ov.appendChild(modalUpgrade());else if(S.modal==='gold')ov.appendChild(modalGold(S.goldCharId));app.appendChild(ov)}
 }
 render();
 showToastIfNeeded();

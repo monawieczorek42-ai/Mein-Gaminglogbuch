@@ -145,6 +145,8 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 
 .btn-pro{width:100%;background:linear-gradient(135deg,#c9a84c 0%,#ffea00 100%);color:#000;font-weight:800;border:none;border-radius:10px;padding:13px;font-size:15px;cursor:pointer;margin-top:10px;font-family:inherit;box-shadow:0 0 20px rgba(201,168,76,0.4);transform:scale(1.03);transition:.15s;letter-spacing:.5px}
 .btn-pro:active{transform:scale(0.98)}
+@keyframes proPulse{0%,100%{box-shadow:0 0 20px rgba(201,168,76,0.4)}50%{box-shadow:0 0 34px rgba(201,168,76,0.75),0 0 60px rgba(201,168,76,0.2)}}
+.btn-pro{animation:proPulse 2s ease-in-out infinite}
 .upgrade-feature{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #ffffff08;font-size:13px;color:#dcddde}
 .upgrade-feature:last-child{border-bottom:none}
 .upgrade-feature-icon{font-size:18px;width:28px;text-align:center;flex-shrink:0}
@@ -243,6 +245,9 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 .share-actions{display:flex;gap:10px}
 .share-dl{background:#5865f2;border:none;border-radius:8px;padding:11px 22px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit}
 .share-cl{background:#1e1e2a;border:1px solid #ffffff10;border-radius:8px;padding:11px 22px;color:#72727d;font-size:14px;cursor:pointer;font-family:inherit}
+
+.support-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#13131a;border:1px solid #c9a84c55;border-radius:8px;padding:10px 14px;color:#c9a84c99;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;width:100%;margin-top:8px}
+.support-btn:hover{border-color:#c9a84c;color:#c9a84c;background:#c9a84c0a}
 </style>
 </head>
 <body>
@@ -953,6 +958,11 @@ function pgNotes(){
   });
   expBtn.innerHTML='📦 Daten exportieren (Backup)';
   wrap.appendChild(expBtn);
+  // Support-Button
+  var supBtn=bt('support-btn','☕  Entwickler unterstützen',function(){
+    window.open('https://buymeacoffee.com/mona95', '_blank');
+  });
+  wrap.appendChild(supBtn);
   if(!f.length){var em=dv('empty');ap(em,mk('div','','📄'),mk('p','','Keine Notizen. Tippe auf + um eine Notiz zu erstellen.'));wrap.appendChild(em)}
   else f.forEach(function(n,i){
     var card=dv('card');card.style.cssText+='padding:13px 15px';card.style.animationDelay=(i*0.05)+'s';
@@ -1120,9 +1130,14 @@ function modalUpgrade(){
     fList.appendChild(row);
   });
   wrap.appendChild(fList);
+  // Hinweis nach Feature-Liste
+  var manualHint=mk('div','');
+  styl(manualHint,{fontSize:'11px',color:'#55556a',lineHeight:'1.7',textAlign:'center',padding:'10px 4px',borderTop:'1px solid #ffffff08',marginBottom:'4px'});
+  manualHint.textContent='Nach der Unterstützung auf "Buy Me a Coffee" schalte ich deinen Account manuell oder per Code-Eingabe frei. Danke für deinen Support!';
+  wrap.appendChild(manualHint);
   // Gold-Button
-  var proBtn=bt('btn-pro','✨  Jetzt für 3,99€ freischalten',function(){
-    alert('Vielen Dank! Das Bezahlsystem wird in Kürze aktiviert.');
+  var proBtn=bt('btn-pro','☕  Für 3,99€ unterstützen & Pro freischalten',function(){
+    window.open('https://buymeacoffee.com/mona95', '_blank');
   });
   wrap.appendChild(proBtn);
   // Abbrechen

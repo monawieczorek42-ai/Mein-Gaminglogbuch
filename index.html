@@ -822,24 +822,36 @@ function pgChars(){
       // Chips: M+/Raid/Vault Status
       var sec1=dv('expand-section');
       sec1.appendChild(mk('div','expand-label','Weekly Status'));
-      // M+ Key Row
-      (function(){
-        var er=dv('expand-row');
+      // M+ Key Row — direkt klickbar
+      (function(cid2){
+        var er=dv('expand-row');er.style.cursor='pointer';
         var done=!!w.mplus;
         var icon=sp('');icon.textContent=done?'✅':'⬜';icon.style.fontSize='13px';
         var lbl=sp('');lbl.textContent='M+ Key';styl(lbl,{flex:1,color:done?'#44445a':'#dcddde',textDecoration:done?'line-through':'none'});
-        var val=sp('');val.textContent=w.mplusLevel?'+'+w.mplusLevel:'';styl(val,{fontSize:'11px',color:'#55556a'});
-        ap(er,icon,lbl,val);sec1.appendChild(er);
-      })();
-      // Raid Row
-      (function(){
+        var val=sp('');val.textContent=w.mplusLevel?'+'+w.mplusLevel:'Tippen zum Abhaken';styl(val,{fontSize:'11px',color:done?'#55556a':'#44445a'});
+        ap(er,icon,lbl,val);
+        er.onclick=function(e){e.stopPropagation();var nw=JSON.parse(JSON.stringify(S.weekly));if(!nw[cid2])nw[cid2]={};nw[cid2].mplus=!nw[cid2].mplus;set({weekly:nw})};
+        sec1.appendChild(er);
+      })(ch.id);
+      // Raid Row — direkt klickbar mit Normal/Heroisch/Mythisch
+      (function(cid2){
         var er=dv('expand-row');
         var done=!!(w.raidN||w.raidH||w.raidM);
         var icon=sp('');icon.textContent=done?'✅':'⬜';icon.style.fontSize='13px';
         var lbl=sp('');lbl.textContent='Raid';styl(lbl,{flex:1,color:done?'#44445a':'#dcddde',textDecoration:done?'line-through':'none'});
         var val=sp('');val.textContent=w.raidM?'Mythisch':w.raidH?'Heroisch':w.raidN?'Normal':'';styl(val,{fontSize:'11px',color:'#55556a'});
         ap(er,icon,lbl,val);sec1.appendChild(er);
-      })();
+        // Raid Buttons N/H/M
+        var raidBtns=dv('');styl(raidBtns,{display:'flex',gap:'5px',marginTop:'4px',marginBottom:'4px'});
+        [{k:'raidN',l:'N',c:'#4caf7d'},{k:'raidH',l:'H',c:'#c8a96e'},{k:'raidM',l:'M',c:'#c0393b'}].forEach(function(r){
+          var btn=bt('',r.l,null);
+          var active=!!w[r.k];
+          styl(btn,{flex:1,padding:'4px',borderRadius:'5px',border:'1px solid '+(active?r.c+'66':' #ffffff0d'),background:active?r.c+'18':'#13131a',color:active?r.c:'#44445a',fontSize:'11px',fontWeight:700,cursor:'pointer',fontFamily:'inherit',transition:'.15s'});
+          (function(rk){btn.onclick=function(e){e.stopPropagation();var nw=JSON.parse(JSON.stringify(S.weekly));if(!nw[cid2])nw[cid2]={};nw[cid2][rk]=!nw[cid2][rk];set({weekly:nw})}})(r.k);
+          raidBtns.appendChild(btn);
+        });
+        sec1.appendChild(raidBtns);
+      })(ch.id);
       // Große Kammer — direkt klickbar mit 3 Slots
       var vaultLbl=mk('div','expand-label','📦 Große Kammer');vaultLbl.style.marginTop='8px';sec1.appendChild(vaultLbl);
       var vaultRow=dv('');styl(vaultRow,{display:'flex',gap:'6px',marginBottom:'4px'});
@@ -1001,8 +1013,6 @@ function pgGoals(){
     inf.appendChild(tags);row.appendChild(inf);
     (function(gid){row.appendChild(bt('delbtn','✕',function(){set({goals:S.goals.filter(function(x){return x.id!==gid})})}))})(g.id);
     ap(card,row);wrap.appendChild(card);
-      i++;
-    });
   });
   return wrap;
 }
@@ -1065,8 +1075,8 @@ function pgAch(){
       })(a.id,a.m);row.appendChild(btns);
     }
     ap(card,row);wrap.appendChild(card);
-      i++;
-    });
+    i++;
+  });
   });
   return wrap;
 }

@@ -256,6 +256,27 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 
 .support-btn{display:flex;align-items:center;justify-content:center;gap:8px;background:#13131a;border:1px solid #c9a84c55;border-radius:8px;padding:10px 14px;color:#c9a84c99;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s;width:100%;margin-top:8px}
 .support-btn:hover{border-color:#c9a84c;color:#c9a84c;background:#c9a84c0a}
+
+/* Erfolg-Kategorien */
+.ach-cat-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#44445a;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.ach-cat-title::after{content:'';flex:1;height:1px;background:#ffffff08}
+/* Punkte-Banner */
+.points-bar{background:linear-gradient(135deg,#1c1c2e,#1a1a28);border:1px solid #c8a96e22;border-radius:12px;padding:14px 16px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between}
+.points-total{font-size:22px;font-weight:800;color:#c8a96e}
+.points-label{font-size:11px;color:#44445a;margin-top:2px}
+.points-max{font-size:11px;color:#44445a;text-align:right}
+/* Stats Seite */
+.stat-card{background:linear-gradient(135deg,rgba(255,255,255,0.03),transparent);border:1px solid #ffffff08;border-radius:12px;padding:14px 16px;margin-bottom:10px}
+.stat-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#44445a;margin-bottom:12px}
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid #ffffff06;font-size:12px}
+.stat-row:last-child{border-bottom:none}
+.stat-name{color:#72727d}
+.stat-val{font-weight:700;color:#dcddde}
+.stat-val.gold{color:#c8a96eaa}
+.stat-val.blue{color:#7289da}
+.stat-val.green{color:#4caf7d}
+/* Season Badge */
+.season-badge{font-size:10px;background:#5865f215;color:#7289da88;border:1px solid #5865f220;border-radius:6px;padding:2px 8px;font-weight:600;margin-left:8px;vertical-align:middle}
 </style>
 </head>
 <body>
@@ -269,8 +290,24 @@ textarea.fi{resize:vertical;line-height:1.5;min-height:70px}
 <script>
 var WC=[{k:'dk',n:'Todesritter',a:'TK',c:'#C41E3A'},{k:'dh',n:'Dämonenjäger',a:'DJ',c:'#A330C9'},{k:'druid',n:'Druide',a:'DR',c:'#FF7C0A'},{k:'evoker',n:'Rufer',a:'RU',c:'#33937F'},{k:'hunter',n:'Jäger',a:'JÄ',c:'#AAD372'},{k:'mage',n:'Magier',a:'MA',c:'#3FC7EB'},{k:'monk',n:'Mönch',a:'MÖ',c:'#00FF98'},{k:'paladin',n:'Paladin',a:'PA',c:'#F48CBA'},{k:'priest',n:'Priester',a:'PR',c:'#DDDDDD'},{k:'rogue',n:'Schurke',a:'SC',c:'#FFF468'},{k:'shaman',n:'Schamane',a:'SH',c:'#0070DD'},{k:'warlock',n:'Hexenmeister',a:'HX',c:'#8788EE'},{k:'warrior',n:'Krieger',a:'KR',c:'#C69B6D'}];
 var GS=[{k:'wow',l:'World of Warcraft',s:'WoW',c:'#ff7d0a',e:'⚔️',w:1},{k:'classic',l:'WoW Classic',s:'Classic',c:'#c8a96e',e:'📜',w:1},{k:'hardcore',l:'WoW Hardcore',s:'HC',c:'#c0393b',e:'💀',w:1},{k:'elden',l:'Elden Ring',s:'ER',c:'#c9a84c',e:'🪦',w:0},{k:'ds',l:'Dark Souls',s:'DS',c:'#888',e:'🔥',w:0},{k:'cod',l:'Call of Duty',s:'CoD',c:'#5b8dd9',e:'🎯',w:0},{k:'ff14',l:'Final Fantasy XIV',s:'FF14',c:'#9b59b6',e:'🌙',w:0},{k:'destiny',l:'Destiny 2',s:'D2',c:'#e67e22',e:'🌌',w:0},{k:'other',l:'Anderes Spiel',s:'?',c:'#72767d',e:'🎮',w:0}];
-var ACH=[{id:'a1',e:'⚔️',n:'Erster M+10 Key',d:'Schließe einen +10 ab',m:1},{id:'a2',e:'🐉',n:'Raid Boss besiegt',d:'Ersten Raidboss besiegen',m:1},{id:'a3',e:'📦',n:'Große Kammer 3/3',d:'Alle 3 Vault-Slots öffnen',m:3},{id:'a4',e:'🏆',n:'Heroisch Clearing',d:'Einen heroischen Raid räumen',m:1},{id:'a5',e:'⚡',n:'M+ Rating 2000',d:'Rating 2000+ erreichen',m:1},{id:'a6',e:'🎯',n:'M+15 Meister',d:'Einen +15 abschließen',m:1},{id:'a7',e:'💎',n:'Mythisch Raider',d:'Mythischen Boss besiegen',m:1},{id:'a8',e:'📖',n:'Stratege',d:'10 Notizen schreiben',m:10},{id:'a9',e:'👥',n:'Twink Sammler',d:'5 Charaktere erstellen',m:5},{id:'a10',e:'🌟',n:'Weekly Veteran',d:'20 Weekly-Aufgaben erledigen',m:20}];
-var WTODOS=[{id:'wb',l:'Weltboss'},{id:'delves',l:'8 Delves'},{id:'raid',l:'Raid Clear'},{id:'vault',l:'Große Kammer'},{id:'m5',l:'M+5 abschließen'},{id:'pvp',l:'PvP Weeklies'}];
+var ACH=[
+  {id:'s3_mp1',e:'⚡',n:'Schlüsselstein-Entdecker',d:'M+ Score 750+ erreichen',m:1},
+  {id:'s3_mp2',e:'🔑',n:'Schlüsselstein-Kämpfer',d:'M+ Score 1500+ erreichen',m:1},
+  {id:'s3_mp3',e:'🏆',n:'Schlüsselstein-Meister',d:'M+ Score 2000+ erreichen',m:1},
+  {id:'s3_mp4',e:'💎',n:'Schlüsselstein-Held',d:'M+ Score 2500+ erreichen',m:1},
+  {id:'s3_mp5',e:'🌟',n:'Schlüsselstein-Legende',d:'M+ Score 3000+ erreichen',m:1},
+  {id:'s3_lv1',e:'⚔️',n:'Leerenspitze: Normal',d:'Einen Boss in Leerenspitze (Normal) besiegen',m:1},
+  {id:'s3_lv2',e:'🛡️',n:'Leerenspitze: Heroisch',d:'Leerenspitze auf Heroisch clearen',m:1},
+  {id:'s3_lv3',e:'💀',n:'Leerenspitze: Mythisch',d:'Einen Boss in Leerenspitze (Mythisch) besiegen',m:1},
+  {id:'s3_tr1',e:'🌀',n:'Traumriss: Normal',d:'Einen Boss im Traumriss (Normal) besiegen',m:1},
+  {id:'s3_tr2',e:'✨',n:'Traumriss: Heroisch',d:'Traumriss auf Heroisch clearen',m:1},
+  {id:'s3_tr3',e:'👁️',n:'Traumriss: Mythisch',d:'Einen Boss im Traumriss (Mythisch) besiegen',m:1},
+  {id:'s3_vc',e:'📦',n:'Große Kammer 3/3',d:'Alle 3 Vault-Slots öffnen',m:3},
+  {id:'s3_nt',e:'📖',n:'Stratege',d:'10 Notizen schreiben',m:10},
+  {id:'s3_ch',e:'👥',n:'Twink Sammler',d:'5 Charaktere erstellen',m:5},
+  {id:'s3_wv',e:'🌟',n:'Weekly Veteran',d:'20 Weekly-Aufgaben erledigen',m:20}
+];
+var WTODOS=[{id:'wb',l:'Weltboss'},{id:'delves',l:'8 Delves'},{id:'raid',l:'Raid Clear'},{id:'vault',l:'Große Kammer'},{id:'m5',l:'M+5 abschließen'},{id:'pvp',l:'PvP Weeklies'},{id:'beutejagd',l:'Beutejagd'},{id:'zeitwanderung',l:'Zeitwanderung'},{id:'soiree',l:'Saltherils Soiree'},{id:'sturm',l:'Sturmarionangriff'},{id:'ueberfluss',l:'Der Überfluss'}];
 
 var PROFS=['Alchemie','Bergbau','Juwelenschleifen','Kochkunst','Kräuterkunde','Lederverarbeitung','Maßschneiderei','Schmiedekunst','Verzauberung','Inschriftenkunde','Ingenieurskunst','Angeln','Archäologie'];
 
@@ -302,10 +339,10 @@ var CLS_EMBLEM={
 
 
 var DUNGEONS=[
-  {id:'d1',n:'Ara-Kara',e:'🕷️'},{id:'d2',n:'Stadt der Fäden',e:'🕸️'},
-  {id:'d3',n:'Grim Batol',e:'🌋'},{id:'d4',n:'Halle der Tapferen',e:'⚔️'},
-  {id:'d5',n:'Mists of Tirna Scithe',e:'🌿'},{id:'d6',n:'The Necrotic Wake',e:'💀'},
-  {id:'d7',n:'Siege of Boralus',e:'⚓'},{id:'d8',n:'The Stonevault',e:'⛏️'}
+  {id:'d1',n:'Akademie von Algeth\'ar',e:'📚'},{id:'d2',n:'Maisarakavernen',e:'🌊'},
+  {id:'d3',n:'Terrasse der Magister',e:'🔮'},{id:'d4',n:'Nexuspunkt Xenas',e:'⚡'},
+  {id:'d5',n:'Die Grube von Saron',e:'❄️'},{id:'d6',n:'Sitz des Traumvirats',e:'👁️'},
+  {id:'d7',n:'Himmelsnadel',e:'🌙'},{id:'d8',n:'Windläuferturm',e:'🌪️'}
 ];
 
 function iw(k){return !!(GS.find(function(g){return g.k===k})||{}).w}
@@ -317,7 +354,17 @@ function saveS(){try{localStorage.setItem(KEY,JSON.stringify({page:S.page,cat:S.
 var d=loadS()||{};
 var S={page:d.page||'chars',cat:d.cat||'Alle',chars:d.chars||[],weekly:d.weekly||{},goals:d.goals||[],notes:d.notes||[],ach:d.ach||{},sel:d.sel||null,wow:!!d.wow,wtodos:d.wtodos||{},dungeons:d.dungeons||{},search:'',modal:null,fab:false,editId:null,goldCharId:null,expanded:{},dungeons:{},onboarded:!!localStorage.getItem('gl_onboarded')};
 if(S.chars.some(function(c){return iw(c.game)}))S.wow=true;
-function set(p){Object.keys(p).forEach(function(k){S[k]=p[k]});saveS();render()}
+function set(p){
+  var con=document.querySelector('.content');
+  var sy=con?con.scrollTop:0;
+  Object.keys(p).forEach(function(k){S[k]=p[k]});
+  saveS();render();
+  // Scroll wiederherstellen falls kein Seitenwechsel
+  if(!p.page&&!p.modal){
+    var con2=document.querySelector('.content');
+    if(con2)con2.scrollTop=sy;
+  }
+}
 function mk(t,cls,txt){var e=document.createElement(t);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
 function dv(cls){return mk('div',cls)}
 function sp(cls,txt){return mk('span',cls,txt)}
@@ -630,6 +677,9 @@ function roundRect(ctx,x,y,w,h,r){
   ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
 }
 
+var ACH_PTS={'s3_mp1':50,'s3_mp2':100,'s3_mp3':150,'s3_mp4':200,'s3_mp5':300,'s3_lv1':100,'s3_lv2':150,'s3_lv3':300,'s3_tr1':100,'s3_tr2':150,'s3_tr3':300,'s3_vc':50,'s3_nt':50,'s3_ch':50,'s3_wv':100};
+var ACH_TOTAL_PTS=2150;
+
 function showWow(){return S.wow||S.chars.some(function(c){return iw(c.game)})}
 
 // ── PAGES ─────────────────────────────────────────────────────────────────────
@@ -736,7 +786,7 @@ function pgChars(){
     });
   },50);
 };
-        ilDec.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;if(cur>0)set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur-1)}):x})})};
+        ilDec.onclick=function(e){e.stopPropagation();var cur=parseInt(S.chars.find(function(x){return x.id===cid}).ilvl)||0;if(cur>0)set({chars:S.chars.map(function(x){return x.id===cid?Object.assign({},x,{ilvl:String(cur-1)}):x})});};
       })(ch.id);
       ap(ilBox,ilInc,ilVal,ilDec);row.appendChild(ilBox);
     }
@@ -772,13 +822,43 @@ function pgChars(){
       // Chips: M+/Raid/Vault Status
       var sec1=dv('expand-section');
       sec1.appendChild(mk('div','expand-label','Weekly Status'));
-      [{label:'M+ Key',done:!!w.mplus,val:w.mplusLevel?'+'+w.mplusLevel:''},{label:'Raid',done:!!(w.raidN||w.raidH||w.raidM),val:w.raidM?'Mythisch':w.raidH?'Heroisch':w.raidN?'Normal':''},{label:'Große Kammer',done:(w.vault||0)>=3,val:(w.vault||0)+'/3'}].forEach(function(item){
+      // M+ Key Row
+      (function(){
         var er=dv('expand-row');
-        var icon=sp('');icon.textContent=item.done?'✅':'⬜';icon.style.fontSize='13px';
-        var lbl=sp('');lbl.textContent=item.label;styl(lbl,{flex:1,color:item.done?'#44445a':'#dcddde',textDecoration:item.done?'line-through':'none'});
-        var val=sp('');val.textContent=item.val;styl(val,{fontSize:'11px',color:'#55556a'});
+        var done=!!w.mplus;
+        var icon=sp('');icon.textContent=done?'✅':'⬜';icon.style.fontSize='13px';
+        var lbl=sp('');lbl.textContent='M+ Key';styl(lbl,{flex:1,color:done?'#44445a':'#dcddde',textDecoration:done?'line-through':'none'});
+        var val=sp('');val.textContent=w.mplusLevel?'+'+w.mplusLevel:'';styl(val,{fontSize:'11px',color:'#55556a'});
         ap(er,icon,lbl,val);sec1.appendChild(er);
+      })();
+      // Raid Row
+      (function(){
+        var er=dv('expand-row');
+        var done=!!(w.raidN||w.raidH||w.raidM);
+        var icon=sp('');icon.textContent=done?'✅':'⬜';icon.style.fontSize='13px';
+        var lbl=sp('');lbl.textContent='Raid';styl(lbl,{flex:1,color:done?'#44445a':'#dcddde',textDecoration:done?'line-through':'none'});
+        var val=sp('');val.textContent=w.raidM?'Mythisch':w.raidH?'Heroisch':w.raidN?'Normal':'';styl(val,{fontSize:'11px',color:'#55556a'});
+        ap(er,icon,lbl,val);sec1.appendChild(er);
+      })();
+      // Große Kammer — direkt klickbar mit 3 Slots
+      var vaultLbl=mk('div','expand-label','📦 Große Kammer');vaultLbl.style.marginTop='8px';sec1.appendChild(vaultLbl);
+      var vaultRow=dv('');styl(vaultRow,{display:'flex',gap:'6px',marginBottom:'4px'});
+      [1,2,3].forEach(function(i){
+        var slot=dv('');
+        var filled=i<=(w.vault||0);
+        styl(slot,{flex:1,height:'28px',borderRadius:'6px',background:filled?'#4caf7d22':'#13131a',border:'1px solid '+(filled?'#4caf7d44':'#ffffff0d'),cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'12px',transition:'.15s'});
+        slot.textContent=filled?'✓':'';
+        (function(idx,cid2){slot.onclick=function(e){
+          e.stopPropagation();
+          var nw=JSON.parse(JSON.stringify(S.weekly));if(!nw[cid2])nw[cid2]={};
+          nw[cid2].vault=(w.vault||0)===idx?idx-1:idx;
+          set({weekly:nw});
+        }})(i,ch.id);
+        vaultRow.appendChild(slot);
       });
+      var vaultInfo=mk('div','','');styl(vaultInfo,{fontSize:'10px',color:'#44445a',marginBottom:'4px'});
+      vaultInfo.textContent=(w.vault||0)+'/3 '+((w.vault||0)>=3?'✨ Voll!':'Slots');
+      ap(sec1,vaultRow,vaultInfo);
       expand.appendChild(sec1);
       // Gold
       if(ch.gold&&ch.gold!='0'){
@@ -921,24 +1001,59 @@ function pgGoals(){
     inf.appendChild(tags);row.appendChild(inf);
     (function(gid){row.appendChild(bt('delbtn','✕',function(){set({goals:S.goals.filter(function(x){return x.id!==gid})})}))})(g.id);
     ap(card,row);wrap.appendChild(card);
+      i++;
+    });
   });
   return wrap;
 }
 
 function pgAch(){
   var done=ACH.filter(function(a){return(S.ach[a.id]||0)>=a.m}).length;
-  var wrap=dv('');var hdr=dv('rowhdr');ap(hdr,sp('ptitle','Erfolge'),styl(sp('',''+done+'/'+ACH.length),{marginLeft:'auto',fontSize:'11px',color:'#44445a'}));wrap.appendChild(hdr);
-  ACH.forEach(function(a,i){
+  var earnedPts=ACH.filter(function(a){return(S.ach[a.id]||0)>=a.m}).reduce(function(s,a){return s+(ACH_PTS[a.id]||0)},0);
+  var wrap=dv('');
+  var hdr=dv('rowhdr');ap(hdr,sp('ptitle','Erfolge'),styl(sp('',''+done+'/'+ACH.length),{marginLeft:'auto',fontSize:'11px',color:'#44445a'}));wrap.appendChild(hdr);
+  // Punkte-Banner
+  var pBar=dv('points-bar');
+  var pLeft=dv('');ap(pLeft,mk('div','points-total',earnedPts+' Pkt.'),mk('div','points-label','Gesammelte Punkte'));
+  var pRight=dv('');styl(pRight,{textAlign:'right'});
+  var pPct=Math.round(earnedPts/ACH_TOTAL_PTS*100);
+  ap(pRight,mk('div','points-max','von '+ACH_TOTAL_PTS+' Pkt.'),mk('div','points-max',pPct+'% erreicht'));
+  ap(pBar,pLeft,pRight);wrap.appendChild(pBar);
+  // Kategorien
+  var CATS=[
+    {l:'⚔️  M+ Schlüsselstein',ids:['s3_mp1','s3_mp2','s3_mp3','s3_mp4','s3_mp5']},
+    {l:'🏯  Leerenspitze',ids:['s3_lv1','s3_lv2','s3_lv3']},
+    {l:'🌀  Traumriss',ids:['s3_tr1','s3_tr2','s3_tr3']},
+    {l:'🌟  Allgemein',ids:['s3_vc','s3_nt','s3_ch','s3_wv']}
+  ];
+  var i=0;
+  CATS.forEach(function(cat){
+    wrap.appendChild(mk('div','ach-cat-title',cat.l));
+    var catAchs=ACH.filter(function(a){return cat.ids.indexOf(a.id)>=0});
+    catAchs.forEach(function(a){
     var p=S.ach[a.id]||0,pct=Math.min(100,Math.round(p/a.m*100)),ok=pct>=100;
     var card=dv('card');card.style.animationDelay=(i*0.04)+'s';if(ok)styl(card,{borderColor:'#4caf7d18',boxShadow:'0 0 14px #4caf7d14'});
     var row=dv('');styl(row,{padding:'12px 14px',display:'flex',gap:'12px',alignItems:'center'});
     var ico=dv('');styl(ico,{width:'44px',height:'44px',borderRadius:'10px',flexShrink:0,background:ok?'#4caf7d12':'#13131a',border:'1px solid '+(ok?'#4caf7d35':'#ffffff0d'),display:'flex',alignItems:'center',justifyContent:'center',fontSize:'18px'});ico.textContent=a.e;row.appendChild(ico);
     var inf=dv('');styl(inf,{flex:1,minWidth:0});
-    ap(inf,styl(mk('div','',a.n),{fontWeight:600,fontSize:'13px',color:'#e8e8f0',marginBottom:'2px'}),styl(mk('div','',a.d),{fontSize:'11px',color:'#44445a'}));
+    var namePts=dv('');styl(namePts,{display:'flex',alignItems:'center',gap:'6px',marginBottom:'2px'});
+    namePts.appendChild(styl(mk('div','',a.n),{fontWeight:600,fontSize:'13px',color:'#e8e8f0'}));
+    var ptBadge=sp('',''+(ACH_PTS[a.id]||0)+' Pkt.');styl(ptBadge,{fontSize:'9px',background:'#c8a96e12',color:'#c8a96e88',border:'1px solid #c8a96e20',borderRadius:'4px',padding:'1px 5px',fontWeight:600,flexShrink:0});
+    namePts.appendChild(ptBadge);
+    inf.appendChild(namePts);
+    inf.appendChild(styl(mk('div','',a.d),{fontSize:'11px',color:'#44445a'}));
     var pb=dv('pb');var pbf=dv('pbf');styl(pbf,{width:pct+'%',background:ok?'#4caf7d':'linear-gradient(90deg,#5865f2,#4caf7d)'});pb.appendChild(pbf);inf.appendChild(pb);
     ap(inf,styl(mk('div','',p+'/'+a.m+' '+(ok?'✓ Abgeschlossen':pct+'%')),{fontSize:'10px',color:ok?'#4caf7d':'#44445a',fontWeight:600}));
     row.appendChild(inf);
-    if(ok)row.appendChild(styl(sp('','✓'),{color:'#4caf7d',fontSize:'20px',textShadow:'0 0 8px #4caf7d60'}));
+    if(ok){
+      var okWrap=dv('');styl(okWrap,{display:'flex',flexDirection:'column',alignItems:'center',gap:'4px'});
+      okWrap.appendChild(styl(sp('','✓'),{color:'#4caf7d',fontSize:'20px',textShadow:'0 0 8px #4caf7d60'}));
+      var undoBtn=bt('','↩',null);
+      styl(undoBtn,{background:'none',border:'1px solid #ffffff10',borderRadius:'5px',color:'#44445a',fontSize:'11px',cursor:'pointer',padding:'2px 6px',fontFamily:'inherit'});
+      (function(aid){undoBtn.onclick=function(){var na=Object.assign({},S.ach);na[aid]=0;set({ach:na})}})(a.id);
+      okWrap.appendChild(undoBtn);
+      row.appendChild(okWrap);
+    }
     else{
       var btns=dv('');styl(btns,{display:'flex',flexDirection:'column',gap:'4px'});
       (function(aid,am){
@@ -950,6 +1065,8 @@ function pgAch(){
       })(a.id,a.m);row.appendChild(btns);
     }
     ap(card,row);wrap.appendChild(card);
+      i++;
+    });
   });
   return wrap;
 }
@@ -1155,8 +1272,80 @@ function modalGold(cid){
   return wrap;
 }
 
+
+function pgStats(){
+  var wrap=dv('');
+  var hdr=dv('rowhdr');ap(hdr,sp('ptitle','Statistiken'));wrap.appendChild(hdr);
+  var wowChars=S.chars.filter(function(c){return iw(c.game)});
+  var allChars=S.chars;
+  if(!allChars.length){
+    var em=dv('empty');ap(em,mk('div','','📊'),mk('p','','Noch keine Charaktere vorhanden.'));wrap.appendChild(em);return wrap;
+  }
+  // Bester Char nach iLvl
+  var bestIlvl=allChars.reduce(function(b,c){return(parseInt(c.ilvl)||0)>(parseInt(b.ilvl)||0)?c:b},allChars[0]);
+  // Bester M+ Score
+  var bestScore=wowChars.length?wowChars.reduce(function(b,c){return(parseInt(c.mscore)||0)>(parseInt(b.mscore)||0)?c:b},wowChars[0]):null;
+  // Meistes Gold
+  var richest=allChars.reduce(function(b,c){return(parseInt(c.gold)||0)>(parseInt(b.gold)||0)?c:b},allChars[0]);
+  // Gesamt Gold
+  var totalGold=allChars.reduce(function(s,c){return s+(parseInt(c.gold)||0)},0);
+  // Weekly Fortschritt
+  var totalW=0,doneW=0;
+  wowChars.forEach(function(ch){var w=S.weekly[ch.id]||{};var items=[!!w.mplus,!!(w.raidN||w.raidH||w.raidM),(w.vault||0)>=3];totalW+=items.length;doneW+=items.filter(Boolean).length});
+  // Erfolge
+  var achDone=ACH.filter(function(a){return(S.ach[a.id]||0)>=a.m}).length;
+  var earnedPts=ACH.filter(function(a){return(S.ach[a.id]||0)>=a.m}).reduce(function(s,a){return s+(ACH_PTS[a.id]||0)},0);
+
+  // Karte 1: Charaktere
+  var c1=dv('stat-card');c1.appendChild(mk('div','stat-title','👥  Charaktere'));
+  [
+    ['Gesamt',allChars.length+' Chars',false],
+    ['WoW Chars',wowChars.length+' Chars',false],
+    ['Höchstes iLvl',bestIlvl?(bestIlvl.name+' · '+( bestIlvl.ilvl||'—')):'—',false],
+    ['Bester M+ Score',bestScore&&bestScore.mscore?bestScore.name+' · '+bestScore.mscore:'—','blue'],
+    ['Reichster Char',richest&&richest.gold&&richest.gold!='0'?richest.name+' · '+Number(richest.gold).toLocaleString('de-DE')+'g':'—','gold'],
+    ['Gesamt Gold',totalGold>0?Number(totalGold).toLocaleString('de-DE')+'g':'—','gold'],
+  ].forEach(function(r){
+    var row=dv('stat-row');
+    row.appendChild(mk('span','stat-name',r[0]));
+    var val=mk('span','stat-val'+(r[2]?' '+r[2]:''),r[1]);
+    row.appendChild(val);c1.appendChild(row);
+  });
+  wrap.appendChild(c1);
+
+  // Karte 2: Weekly
+  var c2=dv('stat-card');c2.appendChild(mk('div','stat-title','📅  Weekly Fortschritt'));
+  [
+    ['Aufgaben erledigt',doneW+'/'+totalW,'green'],
+    ['Fortschritt',totalW>0?Math.round(doneW/totalW*100)+'%':'—','green'],
+    ['Weeklies (Todos)',Object.keys(S.wtodos).filter(function(k){return S.wtodos[k]}).length+'/'+WTODOS.length,false],
+  ].forEach(function(r){
+    var row=dv('stat-row');
+    row.appendChild(mk('span','stat-name',r[0]));
+    var val=mk('span','stat-val'+(r[2]?' '+r[2]:''),r[1]);
+    row.appendChild(val);c2.appendChild(row);
+  });
+  wrap.appendChild(c2);
+
+  // Karte 3: Erfolge
+  var c3=dv('stat-card');c3.appendChild(mk('div','stat-title','🏆  Erfolge'));
+  [
+    ['Abgeschlossen',achDone+'/'+ACH.length,false],
+    ['Gesammelte Punkte',earnedPts+' Pkt.','gold'],
+    ['Maximale Punkte',ACH_TOTAL_PTS+' Pkt.',false],
+    ['Fortschritt',Math.round(earnedPts/ACH_TOTAL_PTS*100)+'%','green'],
+  ].forEach(function(r){
+    var row=dv('stat-row');
+    row.appendChild(mk('span','stat-name',r[0]));
+    var val=mk('span','stat-val'+(r[2]?' '+r[2]:''),r[1]);
+    row.appendChild(val);c3.appendChild(row);
+  });
+  wrap.appendChild(c3);
+  return wrap;
+}
+
 // ── RENDER ────────────────────────────────────────────────────────────────────
-function navDef(){var sw=showWow();return[{k:'chars',l:'Charaktere'},sw?{k:'weekly',l:'Weekly'}:{k:'goals',l:'Ziele'},{k:'achievements',l:'Erfolge'},{k:'notes',l:'Notizen'}]}
+function navDef(){var sw=showWow();return[{k:'chars',l:'Charaktere'},sw?{k:'weekly',l:'Weekly'}:{k:'goals',l:'Ziele'},{k:'achievements',l:'Erfolge'},{k:'stats',l:'Stats'},{k:'notes',l:'Notizen'}]}
 function render(){
   var app=document.getElementById('app');app.innerHTML='';
   var nv=navDef(),vp=nv.find(function(n){return n.k===S.page})?S.page:nv[0].k,sw=showWow();
@@ -1165,6 +1354,7 @@ function render(){
   var firstWow=S.chars.find(function(c){return iw(c.game)});
 
   var ht=mk('div','htitle','');ht.innerHTML='Gamer <em>Logbuch</em>';
+  if(sw){var sb=mk('span','season-badge','S3');ht.appendChild(sb)}
   hdr.appendChild(ht);
   var sr=dv('srow');var sico=sp('','🔍');sico.style.cssText='color:#44445a;flex-shrink:0';sr.appendChild(sico);
   var si=inpEl('text',S.search,'Suchen...','');si.oninput=function(e){set({search:e.target.value})};sr.appendChild(si);
@@ -1184,7 +1374,7 @@ function render(){
     app.appendChild(rb);
   }
   var con=dv('content');
-  if(vp==='chars')con.appendChild(pgChars());else if(vp==='weekly')con.appendChild(pgWeekly());else if(vp==='goals')con.appendChild(pgGoals());else if(vp==='achievements')con.appendChild(pgAch());else if(vp==='notes')con.appendChild(pgNotes());
+  if(vp==='chars')con.appendChild(pgChars());else if(vp==='weekly')con.appendChild(pgWeekly());else if(vp==='goals')con.appendChild(pgGoals());else if(vp==='achievements')con.appendChild(pgAch());else if(vp==='notes')con.appendChild(pgNotes());else if(vp==='stats')con.appendChild(pgStats());
   app.appendChild(con);
   var fw=dv('fabw');
   if(S.fab){var fm=dv('fabm');[{l:'Neuen Charakter',m:'char'},{l:sw?'Weekly starten':'Ziel hinzufügen',m:'goal'},{l:'Notiz schreiben',m:'note'},{l:'☕ Unterstützen',m:'upgrade'}].forEach(function(it){var b=bt('fabi',it.l,null);(function(m){b.onclick=function(){set({modal:m,fab:false})}})(it.m);fm.appendChild(b)});fw.appendChild(fm)}
